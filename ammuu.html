@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Story - For Ammu</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap');
+        
+        :root {
+            --primary: #ff6b6b;
+            --secondary: #ff8787;
+            --light: #fff5f5;
+            --dark: #343a40;
+            --accent: #f8bbd0;
+            --chat-left: #e3f2fd;
+            --chat-right: #fce4ec;
+            --chat-date: #f8bbd0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        
+        header h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        section {
+            margin: 3rem 0;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            border-radius: 10px 0 0 10px;
+        }
+        
+        h2 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+        
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--accent);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -40px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            border: 3px solid var(--accent);
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            height: 250px;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        .promise {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            border-radius: 10px;
+            margin-top: 4rem;
+        }
+        
+        .promise h2 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .promise p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .heart {
+            font-size: 3rem;
+            animation: pulse 1.5s infinite;
+            display: inline-block;
+        }
+        
+        /* Our World Section Styles */
+        .our-world {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .world-item {
+            flex: 1 1 300px;
+            background-color: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .world-item h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+        }
+        
+        /* Chat Section Styles */
+        .chat-container {
+            max-height: 500px;
+            overflow-y: auto;
+            padding: 1rem;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            margin-top: 2rem;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .chat-message {
+            margin-bottom: 1rem;
+            display: flex;
+        }
+        
+        .chat-message.left {
+            justify-content: flex-start;
+        }
+        
+        .chat-message.right {
+            justify-content: flex-end;
+        }
+        
+        .chat-bubble {
+            max-width: 70%;
+            padding: 0.8rem 1.2rem;
+            border-radius: 18px;
+            position: relative;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        
+        .left .chat-bubble {
+            background-color: var(--chat-left);
+            border-bottom-left-radius: 4px;
+        }
+        
+        .right .chat-bubble {
+            background-color: var(--chat-right);
+            border-bottom-right-radius: 4px;
+        }
+        
+        .chat-time {
+            font-size: 0.7rem;
+            color: #666;
+            margin-top: 0.3rem;
+            text-align: right;
+        }
+        
+        .chat-date {
+            text-align: center;
+            margin: 1.5rem 0;
+            color: var(--primary);
+            font-weight: bold;
+            background-color: var(--chat-date);
+            padding: 0.5rem;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+        
+        .chat-date-container {
+            text-align: center;
+            width: 100%;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--dark);
+            color: white;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            section {
+                padding: 1.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .chat-bubble {
+                max-width: 85%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Dearest Ammu</h1>
+        <p>Our beautiful journey together - 11 months of love, laughter, and growing together</p>
+    </header>
+    
+    <div class="container">
+        <section>
+            <h2>Our Story</h2>
+            <p>Ninnu Sri Viswa lo auto lo chusinapude neelo edo special undi anukunna kaani ekku matladaledu ammu, gitam lo matladaka special aney padaniki meaning nuvvu ani ardam ayyindi, nee vente nee venakale tiriga ammu, neeku telikunda jagarata paduthu naalo nene unna. Aa modati rendu samvatsaralu neetho campus chuttu tiragadam, class lo kaburlu cheppadaniki try chesa kaani 4th sem lo naaku aa adrustam dorikindi, kalisi navvukunam, kalisi jnapakaalani panchukunnam. Neeku padipoya ani naake telikunda padipoya. Aa kshanalanu eppatiki marchipolenu ammu.</p>
+            <p>Nuv hyderabad vellipothav ani 2nd year mundu cheppagane edo laa ayipoyindi, inka aakariki jan 11th na nuv nijanga veltunav ani telisinadu naa heartbeat naa control lo ledu, chaala ekku edcha, nenu ippati daaka antha laaga edavaledu, antha ekku edcha ammu nuv vellipotunav antey, naa heart break ayipoyindi. Nee nundi duram antey assala tattukolekapoya ammu. Nuv dakkav emo ani baada, neeku naa premani cheppalena ani bayam, last ki inka dhairyam techukoni promise ga say annappudu cheppesa ammu nuv antey naaku praanam ani!!!</p>
+        </section>
+        
+        <section>
+            <h2>Our Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">First Met - Sri Viswa Auto</div>
+                    <p>Manam anthaga matladukoledu kaani appude maatladukuntey chaala baagunnu ani prathi roju anipisthadi.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">First Talk - Gitam</div>
+                    <p>Gitam antey naaku hatred, asahyam, nachadu kaani nuv unnav ani telisaka naa antha happiest person evaru leru, happy ga feel ayya hammayaaaa gitam waste kaadu ani.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Happy moments - Bus</div>
+                    <p>Mundu antha baane undi, kaani sanat vellipoyaka only mana iddarame unnapudu inka adbutham ga undi, bus antey chiraku oche naaku, bus lone vellali anipinchindi, car oddu em oddu bus ee best ani intlo cheppukuna, ala 5 daaka undadam kosam nenu ninnu brathimi laadadam, 5 bus daaka undali antey java baa ravali leda ds lo code avvali ilanti conditions nuv pettadam, vaatini nen teerchadam, nuv 5 daaka undali neeku photos teeyali, manam selfie digali ani nen neeku telikunda meghna ni request chesukovadam, ila chaala chesa and naaku baa nachindi ammu mana kaburlu, nee dream tho start ayyi mana day tho end ayyedi, evng naa 1st dialogue "how's ur day" ani, baagokapotey marchevadini. Mana waffle, mana oreo, mana masala puri, manam open audi, mana cs, mana brownieee.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">Our memories - 4th sem</div>
+                    <p>Kurcho bey ani start chesav, ala mana days start ayyay, campus bayatiki vellakapoyina, campus lone tirige vallam, baba bazaar lo games, lunch lo mana talks, eroju em cheyali, ee weekend em cheddam, bayatiki plans veyadam, nee bdayy celebrate cheyadam, valla andarni oppinchadam, oka roju lone beach + park + restaurant + movie + games aadam, ila okko memoryy okko diamond ammu naaku.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">After 2nd Year - Nuv vellaka</div>
+                    <p>Nuv vizag odili vellagane, vizag motham sunyam la tayaru ayyindi naaku, emi tochaledu, etu chusina cheekati ontari tanam, assala undalekapotuna and still ippatiki undalekapotuna ammu. Odilesi vellipoyaveeee</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">The Proposal</div>
+                    <p>May 6th life lo one of the best day, chaala bayapaduthu unna ela propose cheyali, chesthe em avtada ani, kaani final ga aa roju cheppesa, and inka aa roju nundi heaven lo unna ammu, naa prema ni free ga neeku telise la chupincha, lopala em dachukokunda open ga cheppesa. Nee chetha babu babu ani pilipinchukovadam, naaku chaala istame nuv ala pilistey, literally I crave for it.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">11 Months Together</div>
+                    <p>Ee video calls lo ayna messages ayna kalisina konni sarle ayna nee meeda inka inka prema perugutune ochindi. Hard situations last month ayna nee meeda prema 1% kuda taggela cheyaledu, antha hard times lo kuda inka perugutune ochidni.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Our Memories</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="2.jpeg" alt="Our First Meet">
+                    <div class="gallery-caption">Us</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="4.jpg" alt="First Date">
+                    <div class="gallery-caption">We</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="6.jpeg" alt="Visiting Hyderabad">
+                    <div class="gallery-caption">Me came for you</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="5.jpg" alt="Special Moment">
+                    <div class="gallery-caption">One of Our Special Moments</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="7.png" alt="Video Call">
+                    <div class="gallery-caption">Countless Video Calls</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="8.jpeg" alt="Together">
+                    <div class="gallery-caption">When We Were Together</div>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Our World</h2>
+            <p>The little things that make our relationship special and unique:</p>
+            
+            <div class="our-world">
+                <div class="world-item">
+                    <h3>Our Song</h3>
+                    <p>Nuv paatalu baa paadathav, kaani zoom lo eppudu paadav kavali ani, idi neeku cheppaledu kaani cheliya song from kshanam naaku istam, "kopam neeku oddu, navvesey oo bomma, na choope nee kosam edhurey chusthudhamma" .</p>
+                </div>
+                
+                <div class="world-item">
+                    <h3>Our Place</h3>
+                    <p>That little café Talent cafe, mana kaburlu, mana brownie, mana selfies and photos naaku chaala istam. Nuv akkada gitam lo unna baa miss ayinapudu tc ki veltha kaani nuvvey gurtu ochi aa food gurtu ochi inka inka ekku miss ayi edchestha, antha istam nuvv gadipina aa place.</p>
+                </div>
+                
+                <div class="world-item">
+                    <h3>Our Tradition</h3>
+                    <p>Good morning and goodnight messages prathi roju, no matter entha baada lo unna aa msg lo mana feelings ni express chestam, gm or mrng, gn gsd gst night ani. These small things are not at all small things ammu, infact avi lekapotey naaku edo ayipothadii, levagane neeke msg chestha night time nee msg thone end avtadi.</p>
+                </div>
+                
+                <div class="world-item">
+                    <h3>Our Language</h3>
+                    <p>Mana nicknames nuv pettevi, pc ani kidoo ani kidulu ani avi ani naaku baa istam ammu, chaala special ga feel avta nuv ala neeku nachinatu pilisthey. Ardam kakunda mana code language lo mu musam lusma ani ila only neeku naake ankitham ani ilanti chinna things ki happy avta nanna. </p>
+                </div>
+                
+                <div class="world-item">
+                    <h3>Our Dreams</h3>
+                    <p>The future we want together - travelling the world, fulfilling your wishes, growing old side by side. Ee dreams ee nannu gurthu chestayi ammu nen inka undali ani, tough situation lo leda chetha thoughts ochinapudu ide gurthu techukunta, naa ammu ki nene undaliii I must ani, ala calm avta bangaram.</p>
+                </div>
+                
+                <div class="world-item">
+                    <h3>Our Strength</h3>
+                    <p>Enni godavalu ayna aa day or the next day normal avtam, tappu evardi unna normal avtam. I cant live without you, and nuv kuda nannu odalakudadu ani manasara vedukuntunaaa. Mana day entha worse unna last ki ardam chesukoni, edo okati cheddam or chuddam ani.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Our Chats</h2>
+            <p>These precious conversations that I've saved like treasures:</p>
+            <p>Inka chaala unnayi, ivi konne</p>
+            <div class="chat-container">
+                <div class="chat-date-container">
+                    <div class="chat-date">Monna train lo</div>
+                </div>
+                
+                <div class="chat-message left">
+                    <div class="chat-bubble">
+                        <p>nuv edavaku now asalu
+                            4days nundi neeku sleep ledu
+                            aa mundu projects ani late ayyindi
+                            clg lo manashanthi ledu
+                            trip motham andarni(mana batch,mee intlo,nannu) manage chestune unnav
+                            oka pakka hackathon pressure, ivala nenu ichina shock, ee chain gola
+                            ivi anni entho depressing elelements
+                            Enduku naake ila ani chala anipistadi,edupu ostadi,aapukovadam chala kastame
+                            okasari washroom ki velli let it out
+                            kaani not more than 2mins, aapukunna headache ee ostadi, edisthe atleast aa baada undadhu ani
+                            ik edisthe poye baada,problems kaadu ani, nuv annatu nee prema tappu kaadu
+                            nuv vedava kaadu, irresponsible kaadu, values leni vaadivi kaadu
+                            brain undi,prema undi,naa medha chache antha undi,badyatha undi,anni unnay neelo
+                            kaani nee tym baaledu,adrustam nee way lo raatledu, daaniki okate solution undi
+                            anni accept chesi,munduki velli,career excellent ga set ayyi,happy ga naatho future plan cheyadam anthe
+                            inka fun,enjoyment life antava
+                            adi manam sampadinchaka automatic ee boundaries,rules,intlo idi taggipothayi
+                            andukani
+                            manam ala baada,problems tho life naasanam cheyaddu
+                            chala strong gaa edurukuni veldam munduki
+                            chala achieve chesthene
+                            chala manchi happy life dakkuthadi
+                            edupu aapesi,+ve gaa neela challenge laa tiskoni
+                            BRING UR CAPABLE,EFFICIENT,INTELIGENT PARDHU BACKKKK.....
+                            ACHIEVE CHEY...PROVE CHEY...SHOW UR WORTH....
+                            prove me wrong.....
+                            WILL BE WAITING FOR THAT DAY, chaduvu chalu, reply repu ivvu, chadivi nenu pettina msg lo nundi koncham ayna dairyam tisko, HAAYIGAAA PADUKO AMMA,
+                            tensions anni vadilesey, chuskundam later, mundu eat sleep well,face wash chey....
+                            GST CHEPPI....GM THO START CHEYALI REPU BAA PADUKO KIDULUUUUUUUU, MISS U D MOST IN D WORLD......</p>
+                        <div class="chat-time">10:43 PM</div>
+                    </div>
+                </div>
+    
+                <div class="chat-date-container">
+                    <div class="chat-date">Cycle</div>
+                </div>
+                
+                <div class="chat-message left">
+                    <div class="chat-bubble">
+                        <p>Call chesindi vc ayyaka “Kidooooo ochesindi kidoooo, I’m happyyyyy” annadiiiii
+                            Entha baaaa annadoooo ammuuu, cycle start ayyindi daaniki, hyd trip lo ekkada ostado ani bayapadindiiii…</p>
+                        <div class="chat-time">1:43 AM</div>
+                    </div>
+                </div>
+                
+                <div class="chat-date-container">
+                    <div class="chat-date">Sweet Random Moments</div>
+                </div>
+                
+                <div class="chat-message left">
+                    <div class="chat-bubble">
+                        <p>Sare kidoo, Sleep, Kidoo Mich u</p>
+                        <div class="chat-time"> 11:23 PM</div>
+                    </div>
+                </div>
+            
+                <div class="chat-message left">
+                    <div class="chat-bubble">
+                        <p>Oyeeeee Niku exams baa raasthe cheptha cheptha anna vishayam chala short and sweet ga chepdam ani fix ayya, mana body functioning ki blood entha imp oo naa functioning ki,nenu happy ga undataniki nuv antha imp ani ardam ayyindi, prathi panilo nee presence, is like essence that boosts my performance... Nuv eppatiki ilane untav ani telusu...nenu neeku ala maaradaniki i will try...nenu 5th sem motham denilo ayna work finish chesa ante adi nee invisible struggle valle, u r my bts for a super hit movie.... Finally okka maata..
+                            NUVVU LEKA NENU LENU.</p>
+                        <div class="chat-time"> 10:43 PM</div>
+                    </div>
+                </div>
+                
+                <div class="chat-message left">
+                    <div class="chat-bubble">
+                        <p>Roju Nenu naalo cheppukunta, Kumbamela, Adaaaaaa MISS AYYA Edcha Nuv lekapothe anthe, Nuv pogadali
+                            Nenu vinali ane ga pics pedatha, Avnu mana photo dp pedithe new reaction enti?                                          </p>
+                        <div class="chat-time">1:43 PM</div>
+                    </div>
+                </div>
+                
+                <div class="chat-message left">
+                    <div class="chat-bubble">
+                        <p>Happiest birthday Mr Pardhuuuuuuuuuu🥳🥳🥳🥳
+                            20Yrs aypoyindi🎊🎊🎊🎊🎊
+                            Nijanga chala chala happy ga undiiiiiii☺️☺️☺️☺️☺️☺️☺️
+                            Nee life lo nenu undatam🤗🤗🤗🤗
+                            Nuvvante naku chala respect undedhi ante manchodu,baa chaduthadu ani😅😅😅😅😅
+                            Kaani aa respect kaastha frnd ship chesav 😁😁😁😁😁😁😁😁
+                            Frnds ayna manam best friends aypoyam🤩🤩🤩🤩🤩🤩🤩🤩🤩
+                            Aa best friends nundi promotion kaavali ani naaku telusu le kaani waiit chey amma😅😅😅😅😅😅😅
+                            Nuv eppatiki happy ga undali😁😁😁😁😁😁😁😁😁😁
+                            Navvuthu undali😊😊😊😊😊😊😊
+                            Ninnu nenu navvistha gaaa😉😉😉
+                            Manam eppudu ilane undamu raa🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗🤗
+                            Nenu neethone unta🤝🤝🤝🤝🤝
+                            Kalise undamu amma😜😜😜😜😜
+                            Evadra ninnu daati naa deggariki ostadu cheppu😅😅😅😅😅😅
+                            Ninnu daati ravali ante vaadu petti puttali le🤭🤭🤭🤭🤭🤭🤭🤭🤭
+                            Nenu ninnu baa chuskuntaaaa☺️☺️
+                            Trust me NANNA🥺🥺🥺🥺🥺
+                            Aanandam lo unta 🥳🥳🥳🥳🥳🥳
+                            Baada lo baagam panchukunta🤌
+                            Amma laa chuskuntaa😁😁😁😁
+                            Birthday ante okka roje kada msg petti vadilestha anukoku😆
+                            Assala vadalanu amma👊👊👊
+                            Pakkane unte kottali ani undi😂😂
+                            Final ga okate amma
+                            I WILL NEVER LEAVE U UNTIL MY LAST BREATH ❤️ Ivala neeku okka chinni surprise kuda........
+                            Choosey.....
+                            
+                             https://geethikachowdary-25.github.io/geethslittlesurprise-20/
+                            
+                            Use airpods for better experience in full volume😅
+                            10 rojula naa kastam nee ksm😅😅
+                            Final gaa nee kallalo aa spark ksm ee raaaaaa anthala kasta padi chesa🤭🤭🤭🤭🤭
+                            Ante adi neeku chala easy ee...antha kastam em kaadu...🥲
+                            Kaani naa intention is to make my BOY happiesttttt🥳🥳🥳🥳🥳🥳🥳
+                            Nachutadi ani veyyi kallatho eduru chustunna😁😁😁😁😁😁😁
+                            Adi chusaka nenu ninnu premistunano ledo neeke teliyali mari😅🤭😁🤗😂😉
+                            Chusi ela undo text chey amma😍
+                            Will be waiting to listen to u.....call ksm baaga waitingggggg😁 💤</p>
+                        <div class="chat-time">Dec 18, 12:00 AM</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Sadness</h2>
+            <p>Even in our happiest moments, there's a shadow of sadness that follows me - the distance between us. When I see couples holding hands in the corridors, leda Talent Cafe daggara, my heart craves for you. The empty seat next to me in class, the lonely bus ride- every day is a reminder of how much I miss you.</p>
+            
+            <p>Last week's struggles were the hardest we've faced. There were moments I feared we might not make it. The tears I cried when we fought, the sleepless nights wondering if we'd recover - that pain was unbearable. But through it all, one truth remained: I cannot imagine my life without you in it.</p>
+            <p>Hyderabad lo last day train ekkesaka pranav and priyanka naa meeda nee meeda tosesaru, geethu ee undamannadi, tana valle mem train late ayyam, ala extra rides ani tirgaru partha and tanu, assala maa maata vinaledu, lunch kuda late chesaru, oka game or 2 aadi raavali anthey kaani anni games aadali antey kudaradu kada, andukey late ayyam ani tosesaru ammu. Intlo sariga undalekapotuna, okkaritho sariga matladatledu, mummy tho no proper talks godavalu valla, nen intlo fight chesa nuv antey bayam and nee gurinchi nen teesukuna stand!! Daddy babai iddaru cheppaleni vishayalu nen risk chesi oppose chesa, nen vilian ayya, vallu baane unnaru, nene yedava ni ayya, inko pakka daddy edo ala lyt lyt ga unnaru, atu mummy ki support vellakunda naaku support raakunda, babai emonchi I'm missing you neeku pillalu putti nuv vallaki time ivvakapotey telustadi, nuv evarni ayitey baa ekku premistavo, praanam ani brathukutavo vallu ninnu pattinchukoru chudu appudu naa value telustadi ani 1 week nundi antunaru, bandi meeda chiraku intlo prashantatha ledu, nee daggara emonchi ala, atu bayatiki cheppaleka, ninnu em analeka, nuv moham meeda I hate you, manaki avvadu, nene chesukonu ani cheppina dhairyam ga untu, partha ani name marchesav, pranav tho matladatha ani anadam, ekkada tosesav emo anna bayam, inko pakka internals assala levu okari daggariki vellaledu marks kosam, inko pakka bits em avtada 1st or 2nd or 3rd ani, bits lo 4 days unta annav relationship lo adi ledu, nit ki baada paddav ben ki sad ayyav, bits kosam happy ayyava antey ledu ntg ntg annav, prathi zoom lo ntg ntg ? ? aney unnav, neeku cheppalenu ammu intlo daarunam ga unna, naa situation baaledu, evaru leru okkadine unna ani, asala mana iddariki ekkada problem ochindi ammu, okkasari manasu purthiga aalochinchaveeee ekkada tappu vellindo... </p>
+            <p>Chinnu chetha 2 mins massage cheyinchuko anna, inka kavali anipistadi, daani kanna odilestha annav, nen kavali anipinchi, dakkanu emo anna bayam tho odileyake nannu, dhairyam techukoni nijanga kaavali annapudu kalisi fight cheddam, train lo sol cheppav kada, adey follow avda, poni nuv em cheyyaka, nene motham chestha nuv just frontend undave, backend nen chusukunta.... Baa throat pain undi, assala em tinalekapotuna, but cheppali ani ledu intha severe undi ani, asala undali ani lede naaku, ee gap lone motham sugar cane ni entha crush chestaro daani kanna daarunam ga unde naa situation. Nijanga chaala baada padutuna, roju padukunapudu edustuna, nidra ratledu, kallu musthey ivey aalochanalu, kallu teristhey ela cheyali ani aalochanalu, nuv cheppav haunting ani, nenu cheppaledu anthey ammu. Night padukovatledu kabbate telikunda afternoons padukundipotuna...</p>
+            <p>But Ammu, our sadness has meaning because our love is worth fighting for. Every tear, every moment of longing - they're proof of how deeply I care. And I would endure a thousand sad days if it means I get to spend a lifetime loving you.</p>
+        </section>
+
+        <section class="promise">
+            <h2>My Promise to You</h2>
+            <p>Ammu, ee 11 months naaku prove chesaye nuvve naa sarvaswam ani, inthaka mundu cheppe vadini "You are my everything" ani kaani ee 11 months lo nenu prathi roju adey feel ayya and naaku nenu inka realise ayya nuvvey important ani. Ochina prathi tough situation oka challenge la tesukoni daati nundi nerchukuna inka baa undali ani, enni godavalu ayna leda enni sarlu topic ochina vaati valla mana bond inka strong ayyidi kaani weak avvaledu, last month monna incident tappa, adi kuda nene correct ga convey cheyaledu, nene maarutha.</p>
+            <p>I promise you that no distance, no obstacle, no difficulty will ever change how much I love you. I will work hardest to become the man worthy of you, to convince uncle and aunty that I will cherish and protect you forever.</p>
+            <p>One day, I will definitely marry you!!! Not just because I want to, but because I can't imagine my life without you in it.</p>
+            <div class="heart">❤️</div>
+            <p>Forever yours,</p>
+            <p>Pardhu alias Kidoo [wanna be Kanna]</p>
+        </section>
+    </div>
+    <footer>
+        <p>Created with love for Ammu - Our story is just beginning</p>
+    </footer>
+</body>
+</html>
